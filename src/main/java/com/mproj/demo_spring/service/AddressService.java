@@ -9,4 +9,6 @@ public interface AddressService {
 
     List<Address> findAllAddreses();
     Optional<Address> findAddressById(Long id);
+    public void saveAddress(Address addressToSave);
+    public void deleteAddressById(Long id);
 }

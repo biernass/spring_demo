@@ -38,7 +38,20 @@ public class AddressServiceImpl implements AddressService {
         Optional<Address> result = dataSource.findById(id);
         result.ifPresent(address -> logger.info("Address read from dao: {}", address));
 
-
         return result;
     }
+
+    @Override
+    public void saveAddress(Address addressToSave) {
+        logger.info("saveAddress() with argument: {}", addressToSave);
+        dataSource.save(addressToSave);
+    }
+
+    @Override
+    public void deleteAddressById(Long id) {
+        logger.info("deleteAddress() with argument: {}", dataSource.findById(id));
+        dataSource.deleteById(id);
+    }
+
+
 }
