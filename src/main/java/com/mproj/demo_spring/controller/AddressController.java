@@ -25,6 +25,7 @@ public class AddressController {
         this.addressService = addressService;
     }
 
+
     @GetMapping("/all-addresses")
     public String showAllAdresses(Model model) {
 
@@ -46,6 +47,18 @@ public class AddressController {
             addressService.saveAddress(address);
         }
         return "redirect:/all-addresses";
+    }
+
+    @GetMapping("/address/add")
+    public String addAddress(Model model) {
+        logger.info("addAddres()");
+
+            model.addAttribute("operationTitle", "New");
+            model.addAttribute("mainParagraph", "Add new");
+            model.addAttribute("address", new Address());
+
+
+        return "address/new-edit-address";
     }
 
     @GetMapping("/address/delete/{id}")
